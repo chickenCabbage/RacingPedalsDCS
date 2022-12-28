@@ -1,5 +1,6 @@
 import hid      #allows access to every HID. to use, run pip install hidapi
 import vgamepad #allows interface to the ViGEm driver. to use, run pip install vgamepad and run the installer (windows only)
+import time
 
 analog_brake = False
 
@@ -22,6 +23,7 @@ if(not virt_ctrler):
 while(True):
     report = pedals.read(64)
     if(not report):
+        time.sleep(0.01) #sleep 10ms
         continue
     #run this to find the output format of your device:
     #print(report)
